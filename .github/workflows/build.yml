@@ -12,28 +12,30 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Install SFML
       run: |
         git clone https://github.com/SFML/SFML.git
         cd SFML
         git checkout 3.0.2
-        if (-Not (Test-Path build)) { mkdir build }
+        if (Test-Path build) { Remove-Item -Recurse -Force build }
+        mkdir build
         cd build
         cmake .. -DCMAKE_INSTALL_PREFIX=C:/SFML -DBUILD_SHARED_LIBS=OFF
         cmake --build . --config Release --target install
-    
+
     - name: Configure CMake
       run: |
-        if (-Not (Test-Path build)) { mkdir build }
+        if (Test-Path build) { Remove-Item -Recurse -Force build }
+        mkdir build
         cd build
         cmake .. -DCMAKE_PREFIX_PATH=C:/SFML -DSFML_STATIC_LIBRARIES=TRUE
-    
+
     - name: Build
       run: |
         cd build
         cmake --build . --config Release
-    
+
     - name: Upload Windows Executable
       uses: actions/upload-artifact@v4
       with:
@@ -45,7 +47,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Install Dependencies
       run: |
         sudo apt-get update
@@ -53,26 +55,28 @@ jobs:
           libfreetype6-dev libopenal-dev libflac-dev \
           libvorbis-dev libgl1-mesa-dev libudev-dev \
           libxrandr-dev libxcursor-dev libxi-dev
-    
+
     - name: Install SFML
       run: |
         git clone https://github.com/SFML/SFML.git
         cd SFML
         git checkout 3.0.2
-        mkdir -p build
+        rm -rf build
+        mkdir build
         cd build
         cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=OFF
         make -j$(nproc)
         sudo make install
         sudo ldconfig
-    
+
     - name: Build Game
       run: |
-        mkdir -p build
+        rm -rf build
+        mkdir build
         cd build
         cmake ..
         make
-    
+
     - name: Upload Linux Executable
       uses: actions/upload-artifact@v4
       with:
