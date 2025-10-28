@@ -35,7 +35,7 @@ jobs:
         cmake --build . --config Release
     
     - name: Upload Windows Executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4   # <- v3'ü v4 ile değiştirildi
       with:
         name: game-windows
         path: build/Release/game.exe
@@ -73,8 +73,7 @@ jobs:
         make
     
     - name: Upload Linux Executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4   # <- v3'ü v4 ile değiştirildi
       with:
         name: game-linux
         path: build/game
-
