@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.16)
+project(game LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# SFML statik olarak kullan
+set(SFML_STATIC_LIBRARIES TRUE)
+
+# SFML 3 için doğru component isimleri (büyük harfle)
+find_package(SFML 3.0 COMPONENTS System Window Graphics REQUIRED)
+
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_include_directories(${PROJECT_NAME} PRIVATE include)
+
+# SFML 3 için namespace kullanımı (SFML::)
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    SFML::System 
+    SFML::Window 
+    SFML::Graphics
+)
