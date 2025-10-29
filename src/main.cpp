@@ -13,7 +13,7 @@ int main()
         return -1; // Programı sonlandır
     }
             sf::Sprite sprite(texture);
-
+Karekter k1("kare.png");
    
 
     while (window.isOpen())
@@ -23,9 +23,10 @@ int main()
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
-        
+        k1.Hareket();
+        k1.Gra();
         window.clear(sf::Color::Black);
-        window.draw(sprite);
+        window.draw(k1.Resim);
         window.display();
     }
 
