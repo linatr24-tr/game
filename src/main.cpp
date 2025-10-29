@@ -1,6 +1,6 @@
  #include <SFML/Graphics.hpp>
 #include <iostream>
-
+#include "Karekter.h"
 int main()
 {
 
@@ -23,7 +23,7 @@ int main()
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
-
+        
         window.clear(sf::Color::Black);
         window.draw(sprite);
         window.display();
