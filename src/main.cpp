@@ -25,7 +25,7 @@ Karekter k1("kare.png");
                 window.close();
         }
     k1.Gra(dt);                   // yerçekimi uygula
-k1.altEngel({0.f, 600.f, 800.f, 1.f}); // engel kontrolü
+// engel kontrolü
 k1.Hareket(dt);               // tuş hareketi
 
        

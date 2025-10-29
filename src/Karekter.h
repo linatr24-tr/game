@@ -17,18 +17,7 @@ Karekter(const std::string& y)
     
 }
 
-void altEngel(const sf::FloatRect& engel) {
-    sf::FloatRect kBox = Resim.getGlobalBounds();
 
-    // Çarpışma varsa
-    if (kBox.intersects(engel)) {
-        // Karakteri engelin üstüne koy
-        Resim.setPosition(kBox.left, engel.top - kBox.height);
-
-        // Yerçekimi hızını sıfırla, böylece karakter "havada kalır"
-        gHiz = 0.0f;
-    }
-}
     void Hareket(float dt) {
         sf::Vector2f hareket(0.f, 0.f);
 
