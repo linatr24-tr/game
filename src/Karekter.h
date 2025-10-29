@@ -9,37 +9,40 @@ sf::Texture Dosya;
 sf::Sprite Resim;
 sf::Clock Saat;
 float gHiz=0.0f;
-float hHiz=5.0f;
+float hHiz=200.0f;
 float gHizart=10.0f;
 float gMax=200.0f;
 Karekter(const std::string& y)
 :Yol(y), Dosya(y), Resim(Dosya){
     
 }
-void Hareket(){
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)){
-        Resim.move({0,-1}); 
+    void Hareket(float dt) {
+        sf::Vector2f hareket(0.f, 0.f);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            hareket.y -= hHiz * dt;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            hareket.y += hHiz * dt;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            hareket.x -= hHiz * dt;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            hareket.x += hHiz * dt;
+
+        Resim.move(hareket);
     }
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)){
-        Resim.move({0,+1}); 
-    }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)){
-            Resim.move({-1,0}); 
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)){
-            Resim.move({+1,0}); 
-        }
-}
+
 void Tp(const float x,const float y){
     Resim.setPosition({x,y});
 }
-void Gra(){
-float dt=Saat.restart().asSeconds();
+void Gra(float dt){
  gHiz += gHizart * dt;
 if (gHiz>gMax){
     gHiz=gMax;
 }
 float y=gHiz*dt;
 Resim.move({0,y});
+}
+float sat(){
+     return Saat.restart().asSeconds();
 }
 };

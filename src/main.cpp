@@ -18,13 +18,14 @@ Karekter k1("kare.png");
 
     while (window.isOpen())
     {
+        float dt=k1.sat();
         while (const auto event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
-        k1.Hareket();
-        k1.Gra();
+        k1.Hareket(dt);
+        k1.Gra(dt);
         window.clear(sf::Color::Black);
         window.draw(k1.Resim);
         window.display();
