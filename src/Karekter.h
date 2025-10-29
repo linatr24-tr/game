@@ -10,8 +10,8 @@ sf::Sprite Resim;
 sf::Clock Saat;
 float gHiz=0.0f;
 float hHiz=5.0f;
-float gHizart=5.0f;
-float gMax=100.0f;
+float gHizart=10.0f;
+float gMax=200.0f;
 Karekter(const std::string& y)
 :Yol(y), Dosya(y), Resim(Dosya){
     
