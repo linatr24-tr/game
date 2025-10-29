@@ -8,10 +8,10 @@ std::string Yol;
 sf::Texture Dosya;
 sf::Sprite Resim;
 sf::Clock Saat;
-float gHiz=0;
-float hHiz=5;
-float gHizart=0.2f;
-float gMax=7.0f;
+float gHiz=0.0f;
+float hHiz=5.0f;
+float gHizart=5.0f;
+float gMax=100.0f;
 Karekter(const std::string& y)
 :Yol(y), Dosya(y), Resim(Dosya){
     
