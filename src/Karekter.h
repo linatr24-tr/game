@@ -19,13 +19,13 @@ Karekter(const std::string& y)
     void Hareket(float dt) {
         sf::Vector2f hareket(0.f, 0.f);
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
             hareket.y -= hHiz * dt;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
             hareket.y += hHiz * dt;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
             hareket.x -= hHiz * dt;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
             hareket.x += hHiz * dt;
 
         Resim.move(hareket);
