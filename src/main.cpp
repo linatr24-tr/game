@@ -24,8 +24,11 @@ Karekter k1("kare.png");
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
-        k1.Hareket(dt);
-        k1.Gra(dt);
+    k1.Gra(dt);                   // yerçekimi uygula
+k1.altEngel({0.f, 600.f, 800.f, 1.f}); // engel kontrolü
+k1.Hareket(dt);               // tuş hareketi
+
+       
         window.clear(sf::Color::Black);
         window.draw(k1.Resim);
         window.display();

@@ -10,11 +10,24 @@ sf::Sprite Resim;
 sf::Clock Saat;
 float gHiz=0.0f;
 float hHiz=200.0f;
-float gHizart=10.0f;
-float gMax=200.0f;
+float gHizart=20.0f;
+float gMax=800.0f;
 Karekter(const std::string& y)
 :Yol(y), Dosya(y), Resim(Dosya){
     
+}
+
+void altEngel(const sf::FloatRect& engel) {
+    sf::FloatRect kBox = Resim.getGlobalBounds();
+
+    // Çarpışma varsa
+    if (kBox.intersects(engel)) {
+        // Karakteri engelin üstüne koy
+        Resim.setPosition(kBox.left, engel.top - kBox.height);
+
+        // Yerçekimi hızını sıfırla, böylece karakter "havada kalır"
+        gHiz = 0.0f;
+    }
 }
     void Hareket(float dt) {
         sf::Vector2f hareket(0.f, 0.f);
