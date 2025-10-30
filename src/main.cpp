@@ -1,6 +1,7 @@
  #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Karekter.h"
+#include "Saha.h"
 int main()
 {
 
@@ -14,7 +15,7 @@ int main()
     }
             sf::Sprite sprite(texture);
 Karekter k1("kare.png");
-   
+   Karekter Top("top.png");
 
     while (window.isOpen())
     {
@@ -24,13 +25,16 @@ Karekter k1("kare.png");
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
-    k1.Gra(dt);                   // yerçekimi uygula
+    k1.Gra(dt);
+    Top.Gra(dt);
+    Top.Sekme(sf::FloatRect({0.0f, 600.0f}, {800.0f, 1.0f}), dt);                 
 // engel kontrolü
 k1.Hareket(dt);               // tuş hareketi
 
        
-        window.clear(sf::Color::Black);
+        window.clear(sf::Color::White);
         window.draw(k1.Resim);
+        window.draw(Top.Resim);
         window.display();
     }
 

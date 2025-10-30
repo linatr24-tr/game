@@ -12,6 +12,7 @@ float gHiz=0.0f;
 float hHiz=200.0f;
 float gHizart=20.0f;
 float gMax=800.0f;
+float sekmeK=0.8f;
 Karekter(const std::string& y)
 :Yol(y), Dosya(y), Resim(Dosya){
     
@@ -46,5 +47,29 @@ Resim.move({0,y});
 }
 float sat(){
      return Saat.restart().asSeconds();
+}
+void Sekme(const sf::FloatRect& engel, float dt) {
+    sf::FloatRect Top = Resim.getGlobalBounds();
+    
+    auto kesisim = Top.findIntersection(engel);
+    
+    if (kesisim.has_value()) {
+        // Topun alt kenarı engelin üst kenarına çarptıysa
+        if (Top.position.y + Top.size.y > engel.position.y && 
+            Top.position.y < engel.position.y) {
+            
+            // Topu engelin üstüne yerleştir
+            Resim.setPosition({
+                Resim.getPosition().x, 
+                engel.position.y - Top.size.y
+            });
+            
+            // Hızı ters çevir ve azalt (sekme)
+            gHiz = -gHiz * sekmeK;
+            
+            // Sekme hareketini uygula (yukarı doğru)
+            Resim.move({0, gHiz * dt});
+        }
+    }
 }
 };
