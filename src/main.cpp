@@ -9,7 +9,9 @@ int main()
     sf::RenderWindow window(sf::VideoMode({800, 600}), "SFML 3.0.2 Test");
     window.setFramerateLimit(60);
     Saha arkadort("beyazdik.png");
-    arkadort.Dortgen(100, 100, 32, 400);
+    Saha arkadort2("beyazdik.png");
+    arkadort.Dortgen(100, 100, 16, 336);
+    arkadort2.Dortgen(100, 436, 160, 16);
             sf::Texture texture("kare.png");
             if (!texture.loadFromFile("kare.png")) {
         std::cerr << "Hata: kare.png yüklenemedi!" << std::endl;
@@ -39,6 +41,7 @@ k1.Hareket(dt);               // tuş hareketi
        
         window.clear(sf::Color::Black);
          window.draw(arkadort.Tile, states);
+          window.draw(arkadort2.Tile, states);
         window.draw(k1.Resim);
         window.draw(Top.Resim);
         window.display();
