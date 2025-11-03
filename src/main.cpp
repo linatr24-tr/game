@@ -8,6 +8,7 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode({800, 600}), "SFML 3.0.2 Test");
     window.setFramerateLimit(60);
+    Saha arkadort("beyazdik.png");
             sf::Texture texture("kare.png");
             if (!texture.loadFromFile("kare.png")) {
         std::cerr << "Hata: kare.png yüklenemedi!" << std::endl;
@@ -25,6 +26,9 @@ Karekter k1("kare.png");
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
+        sf::RenderStates states;
+        states.texture = &arkadort.Dosya;
+       
     k1.Gra(dt);
     Top.Gra(dt);
     Top.Sekme(sf::FloatRect({0.0f, 600.0f}, {800.0f, 1.0f}), dt);                 
@@ -32,7 +36,8 @@ Karekter k1("kare.png");
 k1.Hareket(dt);               // tuş hareketi
 
        
-        window.clear(sf::Color::White);
+        window.clear(sf::Color::Black);
+         window.draw(arkadort.Tile, states);
         window.draw(k1.Resim);
         window.draw(Top.Resim);
         window.display();
