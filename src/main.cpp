@@ -11,9 +11,10 @@ int main()
     Saha arkadort("beyazdik.png");
     Saha arkadort2("beyazdik.png");
     Saha arkadort3("beyazdik.png");
-    arkadort.Dortgen(100, 100, 16, 336);
-    arkadort2.Dortgen(100, 436, 160, 16);
-    arkadort3.Dortgen(260, 100, 16, 336);
+    //x,y,genişlik,uzunluk
+    arkadort.Dortgen(200, 200, 16, 336);
+    arkadort2.Dortgen(200, 536, 176, 16);
+    arkadort3.Dortgen(360, 200, 16, 336);
     
           
 // Karekter k1("kare.png");
