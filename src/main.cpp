@@ -10,20 +10,18 @@ int main()
     window.setFramerateLimit(60);
     Saha arkadort("beyazdik.png");
     Saha arkadort2("beyazdik.png");
+    Saha arkadort3("beyazdik.png");
     arkadort.Dortgen(100, 100, 16, 336);
     arkadort2.Dortgen(100, 436, 160, 16);
-            sf::Texture texture("kare.png");
-            if (!texture.loadFromFile("kare.png")) {
-        std::cerr << "Hata: kare.png yüklenemedi!" << std::endl;
-        return -1; // Programı sonlandır
-    }
-            sf::Sprite sprite(texture);
-Karekter k1("kare.png");
-   Karekter Top("top.png");
+    arkadort3.Dortgen(260, 100, 16, 336);
+    
+          
+// Karekter k1("kare.png");
+  // Karekter Top("top.png");
 
     while (window.isOpen())
     {
-        float dt=k1.sat();
+        // float dt=k1.sat();
         while (const auto event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
@@ -32,18 +30,19 @@ Karekter k1("kare.png");
         sf::RenderStates states;
         states.texture = &arkadort.Dosya;
        
-    k1.Gra(dt);
-    Top.Gra(dt);
-    Top.Sekme(sf::FloatRect({0.0f, 600.0f}, {800.0f, 1.0f}), dt);                 
+   // k1.Gra(dt);
+    //Top.Gra(dt);
+    //Top.Sekme(sf::FloatRect({0.0f, 600.0f}, {800.0f, 1.0f}), dt);                 
 // engel kontrolü
-k1.Hareket(dt);               // tuş hareketi
+//k1.Hareket(dt);               // tuş hareketi
 
        
         window.clear(sf::Color::Black);
          window.draw(arkadort.Tile, states);
           window.draw(arkadort2.Tile, states);
-        window.draw(k1.Resim);
-        window.draw(Top.Resim);
+          window.draw(arkadort3.Tile, states);
+    //    window.draw(k1.Resim);
+      //  window.draw(Top.Resim);
         window.display();
     }
 
